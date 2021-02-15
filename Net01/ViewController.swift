@@ -109,3 +109,9 @@ class ViewController: UIViewController {
     }
 }
 
+// Команды запросов
+/*
+curl https://api.github.com/users/elegion
+ curl https://api.github.com/search/repositories?q=tetris+language:java
+
+*/
