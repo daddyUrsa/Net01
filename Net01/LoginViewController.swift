@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  Net01
 //
 //  Created by Alexey Pavlov on 15.02.2021.
@@ -8,9 +8,9 @@
 import UIKit
 import Kingfisher
 
-class ViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
-    let logoImage: UIImageView = {
+    private let logoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sizeToFit()
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         return imageView
     }()
 
-    let activityIndicator: UIActivityIndicatorView = {
+    private let activityIndicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         activity.translatesAutoresizingMaskIntoConstraints = false
         activity.color = .red
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         return activity
     }()
 
-    let userName: UITextField = {
+    private let userName: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.placeholder = "username"
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         return label
     }()
 
-    let password: UITextField = {
+    private let password: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.placeholder = "password"
@@ -45,20 +45,29 @@ class ViewController: UIViewController {
         return label
     }()
 
-    let loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Login", for: .normal)
         button.setTitleColor(.blue, for: .normal)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 
         return button
     }()
+    
+    let sessionConfiguration = URLSessionConfiguration.default
+    let session = URLSession.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setImage()
+    }
+    
+    @objc func loginButtonTapped() {
+        let searchVC = SearchViewController()
+        navigationController?.pushViewController(searchVC, animated: true)
     }
 
     func setupViews() {
@@ -77,9 +86,11 @@ class ViewController: UIViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
             userName.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 80),
-            userName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            userName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             password.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 30),
-            password.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            password.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            password.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 50),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
@@ -108,6 +119,7 @@ class ViewController: UIViewController {
         }
     }
 }
+
 
 // Команды запросов
 /*
