@@ -71,11 +71,12 @@ class SearchViewController: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-        performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
-        print("sdccfcfcwcwcf")
+//        performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
+        let repoVC = RepoTableViewController()
+        navigationController?.pushViewController(repoVC, animated: true)
     }
     
-    func setupViews() {
+    private func setupViews() {
         view.addSubviews(profileName, profileImage, repoName, language, ascDescSegment, searchButton)
         
         NSLayoutConstraint.activate([
