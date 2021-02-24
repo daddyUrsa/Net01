@@ -48,25 +48,27 @@ func performSearchRepoRequest(repository: String, language: String, order: Int) 
     }
 
     let dataTask = sharedSession.dataTask(with: urlRequest) { (data, response, error) in
-        if let error = error {
-            print(error.localizedDescription)
-            return
+        DispatchQueue.main.async {
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+            if let httpResponse = response as? HTTPURLResponse {
+                print("http status code: \(httpResponse.statusCode)")
+            }
+
+            guard let data = data else {
+                print("no data received")
+                return
+            }
+
+            guard let text = String(data: data, encoding: .utf8) else {
+                print("data encoding failed")
+                return
+            }
+            print("received data: \(text)")
         }
-        
-        if let httpResponse = response as? HTTPURLResponse {
-            print("http status code: \(httpResponse.statusCode)")
-        }
-        
-        guard let data = data else {
-            print("no data received")
-            return
-        }
-        
-        guard let text = String(data: data, encoding: .utf8) else {
-            print("data encoding failed")
-            return
-        }
-        print("received data: \(text)")
     }
     dataTask.resume()
 }

@@ -11,6 +11,7 @@ class RepoTableViewCell: UITableViewCell {
     private let repoName: UILabel = {
         let label = UILabel()
         label.text = "Repo name"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -18,7 +19,9 @@ class RepoTableViewCell: UITableViewCell {
     
     private let repoDescription: UILabel = {
         let label = UILabel()
-        label.text = "Description"
+        label.text = "Description Description Description Description Description Description "
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -70,6 +73,7 @@ class RepoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
+        contentView.backgroundColor = .systemGreen
     }
     
     required init?(coder: NSCoder) {
@@ -77,18 +81,22 @@ class RepoTableViewCell: UITableViewCell {
     }
     
     func setupViews() {
-        addSubviews(repoName, repoDescription)
-        leftStackView.addArrangedSubview(repoName)
-        leftStackView.addArrangedSubview(repoDescription)
-        rightStackView.addArrangedSubview(authorName)
-        rightStackView.addArrangedSubview(authorImage)
-        mainStackView.addArrangedSubview(leftStackView)
-        mainStackView.addArrangedSubview(rightStackView)
+        contentView.addSubview(repoName)
+        contentView.addSubview(repoDescription)
+//        leftStackView.addArrangedSubview(repoName)
+//        leftStackView.addArrangedSubview(repoDescription)
+//        rightStackView.addArrangedSubview(authorName)
+//        rightStackView.addArrangedSubview(authorImage)
+//        mainStackView.addArrangedSubview(leftStackView)
+//        mainStackView.addArrangedSubview(rightStackView)
         NSLayoutConstraint.activate([
-            repoName.topAnchor.constraint(equalTo: self.topAnchor),
-            repoName.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            repoName.topAnchor.constraint(equalTo: contentView.topAnchor),
+            repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             repoDescription.topAnchor.constraint(equalTo: repoName.bottomAnchor),
-            repoDescription.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+            repoDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            repoDescription.heightAnchor.constraint(equalToConstant: 42),
+                                        repoDescription.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 100) * 99),
+            repoDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 //            mainStackView.topAnchor.constraint(equalTo: self.topAnchor),
 //            mainStackView.leadingAnchor.constraint(equalTo: self.leftAnchor),
 //            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),

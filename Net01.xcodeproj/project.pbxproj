@@ -3,21 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		31285AF325DD8214004A6901 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31285AF225DD8214004A6901 /* Post.swift */; };
 		3148D91725DEE9430008E715 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148D91625DEE9430008E715 /* Networking.swift */; };
 		3148D91A25DEF8AF0008E715 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148D91925DEF8AF0008E715 /* SearchViewController.swift */; };
-		3148D91F25DF12170008E715 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3148D91E25DF12170008E715 /* Kingfisher */; };
 		3169E4A525E5694D0070DD02 /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */; };
 		3169E4A925E5754C0070DD02 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169E4A825E5754C0070DD02 /* RepoTableViewCell.swift */; };
+		8FB964E425E6BBE000BF6E12 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB964E325E6BBDF00BF6E12 /* SearchResponse.swift */; };
 		8FC5981E25DADBC70033AAF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5981D25DADBC70033AAF4 /* AppDelegate.swift */; };
 		8FC5982025DADBC70033AAF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5981F25DADBC70033AAF4 /* SceneDelegate.swift */; };
 		8FC5982225DADBC70033AAF4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5982125DADBC70033AAF4 /* LoginViewController.swift */; };
 		8FC5982725DADBCC0033AAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5982625DADBCC0033AAF4 /* Assets.xcassets */; };
 		8FC5982A25DADBCC0033AAF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5982825DADBCC0033AAF4 /* LaunchScreen.storyboard */; };
+		E6E4776F14A6164E22BCBC35 /* Pods_Net01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840034D28E6DD71306FFA7E4 /* Pods_Net01.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		3148D91925DEF8AF0008E715 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
 		3169E4A825E5754C0070DD02 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		840034D28E6DD71306FFA7E4 /* Pods_Net01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Net01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B5AC09BCCED0237740ACCDC /* Pods-Net01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Net01.release.xcconfig"; path = "Target Support Files/Pods-Net01/Pods-Net01.release.xcconfig"; sourceTree = "<group>"; };
+		8FB964E325E6BBDF00BF6E12 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		8FC5981A25DADBC70033AAF4 /* Net01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Net01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC5981D25DADBC70033AAF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FC5981F25DADBC70033AAF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +37,7 @@
 		8FC5982625DADBCC0033AAF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FC5982925DADBCC0033AAF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FC5982B25DADBCC0033AAF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC86C569D792E243B94F5980 /* Pods-Net01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Net01.debug.xcconfig"; path = "Target Support Files/Pods-Net01/Pods-Net01.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,18 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3148D91F25DF12170008E715 /* Kingfisher in Frameworks */,
+				E6E4776F14A6164E22BCBC35 /* Pods_Net01.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		455E701A613F41820EA20A70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC86C569D792E243B94F5980 /* Pods-Net01.debug.xcconfig */,
+				8B5AC09BCCED0237740ACCDC /* Pods-Net01.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5010594265144922597D18CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				840034D28E6DD71306FFA7E4 /* Pods_Net01.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8FC5981125DADBC70033AAF4 = {
 			isa = PBXGroup;
 			children = (
 				8FC5981C25DADBC70033AAF4 /* Net01 */,
 				8FC5981B25DADBC70033AAF4 /* Products */,
+				455E701A613F41820EA20A70 /* Pods */,
+				5010594265144922597D18CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +94,7 @@
 				8FC5981F25DADBC70033AAF4 /* SceneDelegate.swift */,
 				8FC5982125DADBC70033AAF4 /* LoginViewController.swift */,
 				3148D91625DEE9430008E715 /* Networking.swift */,
+				8FB964E325E6BBDF00BF6E12 /* SearchResponse.swift */,
 				3148D91925DEF8AF0008E715 /* SearchViewController.swift */,
 				3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */,
 				3169E4A825E5754C0070DD02 /* RepoTableViewCell.swift */,
@@ -88,18 +113,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8FC5982E25DADBCC0033AAF4 /* Build configuration list for PBXNativeTarget "Net01" */;
 			buildPhases = (
+				4B5721674167584BA4053758 /* [CP] Check Pods Manifest.lock */,
 				8FC5981625DADBC70033AAF4 /* Sources */,
 				8FC5981725DADBC70033AAF4 /* Frameworks */,
 				8FC5981825DADBC70033AAF4 /* Resources */,
+				9F63C2A110CEBA289CD82BD4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Net01;
-			packageProductDependencies = (
-				3148D91E25DF12170008E715 /* Kingfisher */,
-			);
 			productName = Net01;
 			productReference = 8FC5981A25DADBC70033AAF4 /* Net01.app */;
 			productType = "com.apple.product-type.application";
@@ -128,7 +152,6 @@
 			);
 			mainGroup = 8FC5981125DADBC70033AAF4;
 			packageReferences = (
-				3148D91D25DF12170008E715 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 8FC5981B25DADBC70033AAF4 /* Products */;
 			projectDirPath = "";
@@ -151,6 +174,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4B5721674167584BA4053758 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Net01-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F63C2A110CEBA289CD82BD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Net01/Pods-Net01-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Net01/Pods-Net01-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Net01/Pods-Net01-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8FC5981625DADBC70033AAF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -164,6 +229,7 @@
 				8FC5981E25DADBC70033AAF4 /* AppDelegate.swift in Sources */,
 				8FC5982025DADBC70033AAF4 /* SceneDelegate.swift in Sources */,
 				31285AF325DD8214004A6901 /* Post.swift in Sources */,
+				8FB964E425E6BBE000BF6E12 /* SearchResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +365,7 @@
 		};
 		8FC5982F25DADBCC0033AAF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC86C569D792E243B94F5980 /* Pods-Net01.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +385,7 @@
 		};
 		8FC5983025DADBCC0033AAF4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B5AC09BCCED0237740ACCDC /* Pods-Net01.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -357,25 +425,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3148D91D25DF12170008E715 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.1.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3148D91E25DF12170008E715 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3148D91D25DF12170008E715 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8FC5981225DADBC70033AAF4 /* Project object */;
 }

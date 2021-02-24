@@ -71,7 +71,7 @@ class SearchViewController: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-//        performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
+        performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
         let repoVC = RepoTableViewController()
         navigationController?.pushViewController(repoVC, animated: true)
     }

@@ -19,8 +19,9 @@ class RepoTableViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped )
         tableView.dataSource = self
+//        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: cellID)
         return tableView
     }()
     
@@ -52,8 +53,7 @@ extension UIViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
-        cell.textLabel?.text = "sdgfrsg"
+        let cell: RepoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! RepoTableViewCell
         
         return cell
     }
