@@ -39,7 +39,7 @@ final class Networking {
         return request
     }
 
-    func performSearchRepoRequest(repository: String, language: String, order: Int) {
+    func performSearchRepoRequest(repository: String, language: String, order: Int, completion: @escaping () -> ()) {
         guard let urlRequest = searchRepositoriesRequest(
             repository: repository,
             language: language,
@@ -65,10 +65,6 @@ final class Networking {
                     return
                 }
 
-//                guard let text = String(data: data, encoding: .utf8) else {
-//                    print("data encoding failed")
-//                    return
-//                }
                 do {
                     let repositories: Repos = try JSONDecoder().decode(Repos.self, from: data)
                     self.model = repositories.items
@@ -76,9 +72,7 @@ final class Networking {
                 } catch let jsonError {
                     print("Failed JSON decode - нихуя не работает", jsonError)
                 }
-
-    //            print("received data: \(text)")
-    //            print(repositories)
+                completion()
             }
         }
         dataTask.resume()

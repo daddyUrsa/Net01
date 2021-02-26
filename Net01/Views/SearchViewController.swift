@@ -28,21 +28,25 @@ class SearchViewController: UIViewController {
     }()
     
     private let repoName: UITextField = {
-        let textLabel = UITextField()
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.placeholder = "repository name"
-        textLabel.borderStyle = .line
+        let label = UITextField()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.placeholder = "repository name"
+        label.borderStyle = .line
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftViewMode = .always
 
-        return textLabel
+        return label
     }()
 
     private let language: UITextField = {
-        let textLabel = UITextField()
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.placeholder = "language"
-        textLabel.borderStyle = .line
+        let label = UITextField()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.placeholder = "language"
+        label.borderStyle = .line
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftViewMode = .always
 
-        return textLabel
+        return label
     }()
     
     private let ascDescSegment: UISegmentedControl = {
@@ -73,13 +77,12 @@ class SearchViewController: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-        networking.performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
         let repoVC = RepoTableViewController()
-        repoVC.repoArray = networking.model
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        networking.performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex) {
             repoVC.repoArray = self.networking.model
-            self.navigationController?.pushViewController(repoVC, animated: true)
+            repoVC.updateTableView()
         }
+        self.navigationController?.pushViewController(repoVC, animated: true)
     }
     
     private func setupViews() {
@@ -107,8 +110,4 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension UIView {
-    func addSubviews(_ subviews: UIView...) {
-        subviews.forEach { addSubview($0) }
-    }
-}
+

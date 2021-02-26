@@ -20,7 +20,7 @@ final class RepoTableViewCell: UITableViewCell {
     
     private let repoDescription: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Description"
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +31,7 @@ final class RepoTableViewCell: UITableViewCell {
     private let authorName: UILabel = {
         let label = UILabel()
         label.text = "User"
+        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -47,7 +48,7 @@ final class RepoTableViewCell: UITableViewCell {
     private let leftStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         
         return stackView
     }()
@@ -55,7 +56,7 @@ final class RepoTableViewCell: UITableViewCell {
     private let rightStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         
         return stackView
     }()
@@ -63,14 +64,13 @@ final class RepoTableViewCell: UITableViewCell {
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.backgroundColor = .red
         
         return stackView
     }()
 
     func cellDataFill(repo: Items) {
-        print("Работает!!!")
         repoName.text = repo.name
         authorName.text = repo.full_name
         repoDescription.text = repo.description
@@ -82,7 +82,6 @@ final class RepoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
-        contentView.backgroundColor = .systemGreen
     }
     
     required init?(coder: NSCoder) {
@@ -92,6 +91,8 @@ final class RepoTableViewCell: UITableViewCell {
     func setupViews() {
         contentView.addSubview(repoName)
         contentView.addSubview(repoDescription)
+        contentView.addSubview(authorName)
+        contentView.addSubview(authorImage)
 //        leftStackView.addArrangedSubview(repoName)
 //        leftStackView.addArrangedSubview(repoDescription)
 //        rightStackView.addArrangedSubview(authorName)
@@ -100,12 +101,20 @@ final class RepoTableViewCell: UITableViewCell {
 //        mainStackView.addArrangedSubview(rightStackView)
         NSLayoutConstraint.activate([
             repoName.topAnchor.constraint(equalTo: contentView.topAnchor),
-            repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             repoDescription.topAnchor.constraint(equalTo: repoName.bottomAnchor),
-            repoDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            repoDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             repoDescription.heightAnchor.constraint(equalToConstant: 42),
-                                        repoDescription.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 100) * 99),
-            repoDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            repoDescription.widthAnchor.constraint(equalToConstant: (contentView.frame.width * 0.7)),
+            repoDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            authorName.topAnchor.constraint(equalTo: contentView.topAnchor),
+            authorName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            authorName.widthAnchor.constraint(equalToConstant: (contentView.frame.width * 0.3)),
+            authorImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            authorImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            authorImage.widthAnchor.constraint(equalToConstant: 40),
+            authorImage.heightAnchor.constraint(equalToConstant: 40)
+
 //            mainStackView.topAnchor.constraint(equalTo: self.topAnchor),
 //            mainStackView.leadingAnchor.constraint(equalTo: self.leftAnchor),
 //            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),

@@ -6,13 +6,11 @@
 //
 
 import UIKit
-private let networking = Networking()
+//private let networking = Networking()
 
 class RepoTableViewController: UIViewController {
-    var repository: String?
-    var language: String?
-    var order: Int?
     var repoArray: [Items] = []
+    let cellID = "cellID"
 
     private let repoCount: UILabel = {
         let label = UILabel()
@@ -30,25 +28,19 @@ class RepoTableViewController: UIViewController {
         tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: cellID)
         return tableView
     }()
-    
-    let cellID = "cellID"
-    
-//    init(repoArray: [Items], reposCount: Int) {
-//        super.init(nibName: nil, bundle: nil)
-//
-//        self.repoArray = repoArray
-//        self.reposCount = reposCount
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
         setupViews()
+    }
+
+    func updateTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            print(self.repoArray)
+        }
     }
     
     private func setupViews() {
@@ -71,7 +63,7 @@ extension RepoTableViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RepoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! RepoTableViewCell
+        let cell: RepoTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! RepoTableViewCell
         let cellData = repoArray[indexPath.row]
         cell.cellDataFill(repo: cellData)
         return cell

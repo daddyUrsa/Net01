@@ -12,7 +12,9 @@ final class LoginViewController: UIViewController {
 
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
+        let imageURL = URL(string: "https://github.githubassets.com/images/modules/logos_page/Octocat.png")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.kf.setImage(with: imageURL)
         imageView.sizeToFit()
 
         return imageView
@@ -32,6 +34,8 @@ final class LoginViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.placeholder = "username"
         label.borderStyle = .line
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftViewMode = .always
 
         return label
     }()
@@ -41,6 +45,8 @@ final class LoginViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.placeholder = "password"
         label.borderStyle = .line
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftViewMode = .always
 
         return label
     }()
@@ -62,7 +68,6 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
-        setImage()
     }
     
     @objc func loginButtonTapped() {
@@ -72,11 +77,7 @@ final class LoginViewController: UIViewController {
 
     func setupViews() {
         view.backgroundColor = .white
-        view.addSubview(logoImage)
-        view.addSubview(activityIndicator)
-        view.addSubview(userName)
-        view.addSubview(password)
-        view.addSubview(loginButton)
+        view.addSubviews(logoImage, activityIndicator, userName, password, loginButton)
 
         NSLayoutConstraint.activate([
             logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
@@ -95,7 +96,19 @@ final class LoginViewController: UIViewController {
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
+}
 
+
+
+
+// Команды запросов
+/*
+curl https://api.github.com/users/elegion
+ curl https://api.github.com/search/repositories?q=tetris+language:java
+
+*/
+
+/*
     func setImage() {
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
@@ -118,12 +131,4 @@ final class LoginViewController: UIViewController {
 
         }
     }
-}
-
-
-// Команды запросов
-/*
-curl https://api.github.com/users/elegion
- curl https://api.github.com/search/repositories?q=tetris+language:java
-
-*/
+ */
