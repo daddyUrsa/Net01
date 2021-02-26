@@ -32,7 +32,7 @@ class SearchViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.placeholder = "repository name"
         label.borderStyle = .line
-        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
         label.leftViewMode = .always
 
         return label
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.placeholder = "language"
         label.borderStyle = .line
-        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
         label.leftViewMode = .always
 
         return label

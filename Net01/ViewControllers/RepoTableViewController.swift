@@ -32,14 +32,14 @@ class RepoTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        view.backgroundColor = .white
+        view.backgroundColor = .white
         setupViews()
     }
 
     func updateTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            print(self.repoArray)
+            self.repoCount.text = "Repositories found: \(self.repoArray.count)"
         }
     }
     
@@ -48,7 +48,7 @@ class RepoTableViewController: UIViewController {
         NSLayoutConstraint.activate([
             repoCount.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             repoCount.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            tableView.topAnchor.constraint(equalTo: repoCount.bottomAnchor, constant: 30),
+            tableView.topAnchor.constraint(equalTo: repoCount.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -70,8 +70,8 @@ extension RepoTableViewController: UITableViewDataSource {
     }
 }
 
-extension UIViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-}
+//extension UIViewController: UITableViewDelegate {
+//    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
+//}

@@ -11,6 +11,7 @@
 		3148D91A25DEF8AF0008E715 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148D91925DEF8AF0008E715 /* SearchViewController.swift */; };
 		3169E4A525E5694D0070DD02 /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */; };
 		3169E4A925E5754C0070DD02 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169E4A825E5754C0070DD02 /* RepoTableViewCell.swift */; };
+		31B68C8A25E98AA100EFF48C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B68C8925E98AA100EFF48C /* Constants.swift */; };
 		3C2E088F8882070D1F907749 /* Pods_Net01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D024238A8298994364549831 /* Pods_Net01.framework */; };
 		8F8962AE25E7F8910070942F /* Repos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8962AD25E7F8910070942F /* Repos.swift */; };
 		8FBD023325E9543600F0DDE2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBD023225E9543600F0DDE2 /* ViewExtension.swift */; };
@@ -26,6 +27,7 @@
 		3148D91925DEF8AF0008E715 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
 		3169E4A825E5754C0070DD02 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		31B68C8925E98AA100EFF48C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5555415526755CA24866545D /* Pods-Net01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Net01.debug.xcconfig"; path = "Target Support Files/Pods-Net01/Pods-Net01.debug.xcconfig"; sourceTree = "<group>"; };
 		79A2D24B9049285E75056253 /* Pods-Net01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Net01.release.xcconfig"; path = "Target Support Files/Pods-Net01/Pods-Net01.release.xcconfig"; sourceTree = "<group>"; };
 		8F8962AD25E7F8910070942F /* Repos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repos.swift; sourceTree = "<group>"; };
@@ -72,9 +74,6 @@
 		319DA20E25E97441004129ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8FC5982125DADBC70033AAF4 /* LoginViewController.swift */,
-				3148D91925DEF8AF0008E715 /* SearchViewController.swift */,
-				3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */,
 				3169E4A825E5754C0070DD02 /* RepoTableViewCell.swift */,
 				8FBD023225E9543600F0DDE2 /* ViewExtension.swift */,
 			);
@@ -85,8 +84,19 @@
 			isa = PBXGroup;
 			children = (
 				3148D91625DEE9430008E715 /* Networking.swift */,
+				31B68C8925E98AA100EFF48C /* Constants.swift */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		31B68C8825E989ED00EFF48C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8FC5982125DADBC70033AAF4 /* LoginViewController.swift */,
+				3148D91925DEF8AF0008E715 /* SearchViewController.swift */,
+				3169E4A425E5694D0070DD02 /* RepoTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		8FC5981125DADBC70033AAF4 = {
@@ -110,9 +120,10 @@
 		8FC5981C25DADBC70033AAF4 /* Net01 */ = {
 			isa = PBXGroup;
 			children = (
-				319DA21025E97478004129ED /* System */,
 				319DA20E25E97441004129ED /* Views */,
+				31B68C8825E989ED00EFF48C /* ViewControllers */,
 				319DA20D25E97421004129ED /* Model */,
+				319DA21025E97478004129ED /* System */,
 				8FC5981D25DADBC70033AAF4 /* AppDelegate.swift */,
 				8FC5981F25DADBC70033AAF4 /* SceneDelegate.swift */,
 				8FC5982625DADBCC0033AAF4 /* Assets.xcassets */,
@@ -248,6 +259,7 @@
 				3148D91A25DEF8AF0008E715 /* SearchViewController.swift in Sources */,
 				8FC5982225DADBC70033AAF4 /* LoginViewController.swift in Sources */,
 				8FBD023325E9543600F0DDE2 /* ViewExtension.swift in Sources */,
+				31B68C8A25E98AA100EFF48C /* Constants.swift in Sources */,
 				3169E4A925E5754C0070DD02 /* RepoTableViewCell.swift in Sources */,
 				3148D91725DEE9430008E715 /* Networking.swift in Sources */,
 				8FC5981E25DADBC70033AAF4 /* AppDelegate.swift in Sources */,

@@ -32,9 +32,9 @@ final class LoginViewController: UIViewController {
     private let userName: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = "username"
+        label.placeholder = Constants.usernamePlaceholder
         label.borderStyle = .line
-        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
         label.leftViewMode = .always
 
         return label
@@ -43,9 +43,9 @@ final class LoginViewController: UIViewController {
     private let password: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = "password"
+        label.placeholder = Constants.passwordPlaceholder
         label.borderStyle = .line
-        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: label.frame.height))
+        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
         label.leftViewMode = .always
 
         return label
@@ -54,7 +54,7 @@ final class LoginViewController: UIViewController {
     private let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Login", for: .normal)
+        button.setTitle(Constants.loginButton, for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 

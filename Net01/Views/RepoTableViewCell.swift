@@ -44,31 +44,6 @@ final class RepoTableViewCell: UITableViewCell {
 
         return imageView
     }()
-    
-    private let leftStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        
-        return stackView
-    }()
-    
-    private let rightStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        
-        return stackView
-    }()
-    
-    private let mainStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        stackView.backgroundColor = .red
-        
-        return stackView
-    }()
 
     func cellDataFill(repo: Items) {
         repoName.text = repo.name
@@ -93,17 +68,11 @@ final class RepoTableViewCell: UITableViewCell {
         contentView.addSubview(repoDescription)
         contentView.addSubview(authorName)
         contentView.addSubview(authorImage)
-//        leftStackView.addArrangedSubview(repoName)
-//        leftStackView.addArrangedSubview(repoDescription)
-//        rightStackView.addArrangedSubview(authorName)
-//        rightStackView.addArrangedSubview(authorImage)
-//        mainStackView.addArrangedSubview(leftStackView)
-//        mainStackView.addArrangedSubview(rightStackView)
         NSLayoutConstraint.activate([
             repoName.topAnchor.constraint(equalTo: contentView.topAnchor),
-            repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.paddingLeft),
             repoDescription.topAnchor.constraint(equalTo: repoName.bottomAnchor),
-            repoDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            repoDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.paddingLeft),
             repoDescription.heightAnchor.constraint(equalToConstant: 42),
             repoDescription.widthAnchor.constraint(equalToConstant: (contentView.frame.width * 0.7)),
             repoDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -114,11 +83,6 @@ final class RepoTableViewCell: UITableViewCell {
             authorImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             authorImage.widthAnchor.constraint(equalToConstant: 40),
             authorImage.heightAnchor.constraint(equalToConstant: 40)
-
-//            mainStackView.topAnchor.constraint(equalTo: self.topAnchor),
-//            mainStackView.leadingAnchor.constraint(equalTo: self.leftAnchor),
-//            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            mainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }
