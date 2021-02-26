@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class RepoTableViewCell: UITableViewCell {
+final class RepoTableViewCell: UITableViewCell {
     private let repoName: UILabel = {
         let label = UILabel()
         label.text = "Repo name"
@@ -19,7 +20,7 @@ class RepoTableViewCell: UITableViewCell {
     
     private let repoDescription: UILabel = {
         let label = UILabel()
-        label.text = "Description Description Description Description Description Description "
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,9 +66,17 @@ class RepoTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.backgroundColor = .red
         
-        
         return stackView
     }()
+
+    func cellDataFill(repo: Items) {
+        print("Работает!!!")
+        repoName.text = repo.name
+        authorName.text = repo.full_name
+        repoDescription.text = repo.description
+        let url = URL(string: repo.owner.avatar_url)
+        authorImage.kf.setImage(with: url)
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

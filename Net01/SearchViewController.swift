@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    private let networking = Networking()
+
     private let profileName: UILabel = {
         let label = UILabel()
         label.text = "Hello"
@@ -71,9 +73,13 @@ class SearchViewController: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-        performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
+        networking.performSearchRepoRequest(repository: repoName.text ?? "", language: language.text ?? "", order: ascDescSegment.selectedSegmentIndex)
         let repoVC = RepoTableViewController()
-        navigationController?.pushViewController(repoVC, animated: true)
+        repoVC.repoArray = networking.model
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            repoVC.repoArray = self.networking.model
+            self.navigationController?.pushViewController(repoVC, animated: true)
+        }
     }
     
     private func setupViews() {
