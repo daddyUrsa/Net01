@@ -19,6 +19,15 @@ class RepoTableViewController: UIViewController {
         return label
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView()
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.color = .red
+        activity.isHidden = true
+
+        return activity
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped )
         let queue = DispatchQueue.global(qos: .utility)
@@ -34,24 +43,30 @@ class RepoTableViewController: UIViewController {
 
         view.backgroundColor = .white
         setupViews()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
 
     func updateTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.repoCount.text = "Repositories found: \(self.repoArray.count)"
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
     
     private func setupViews() {
-        view.addSubviews(repoCount, tableView)
+        view.addSubviews(repoCount, tableView, activityIndicator)
         NSLayoutConstraint.activate([
             repoCount.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             repoCount.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.topAnchor.constraint(equalTo: repoCount.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor)
         ])
     }
 }
