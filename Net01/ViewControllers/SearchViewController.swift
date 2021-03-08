@@ -10,7 +10,7 @@ import UIKit
 class SearchViewController: UIViewController {
     private let networking = Networking()
 
-    private let profileName: UILabel = {
+    let profileName: UILabel = {
         let label = UILabel()
         label.text = "Hello"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
         return label
     }()
     
-    private let profileImage: UIImageView = {
+    let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.sizeToFit()

@@ -21,4 +21,5 @@ struct Items: Codable {
 
 struct Owner: Codable {
     var avatar_url: String
+    var html_url: String
 }

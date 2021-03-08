@@ -10,6 +10,7 @@ import UIKit
 struct Constants {
     static let usernamePlaceholder = "username"
     static let passwordPlaceholder = "password"
+    static let tokenPlaceholder = "token"
     static let loginButton = "Login"
     static let paddingLeft: CGFloat = 16
     static let paddingRight: CGFloat = 16

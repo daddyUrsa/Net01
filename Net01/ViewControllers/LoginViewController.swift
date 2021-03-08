@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 
 final class LoginViewController: UIViewController {
+    private let networking = Networking()
 
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
@@ -29,21 +30,19 @@ final class LoginViewController: UIViewController {
         return activity
     }()
 
-    private let userName: UITextField = {
-        let label = UITextField()
+    private let userName: UILabel = {
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = Constants.usernamePlaceholder
-        label.borderStyle = .line
-        label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
-        label.leftViewMode = .always
+        label.textAlignment = .center
+        label.isHidden = true
 
         return label
     }()
 
-    private let password: UITextField = {
+    private let token: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = Constants.passwordPlaceholder
+        label.placeholder = Constants.usernamePlaceholder
         label.borderStyle = .line
         label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
         label.leftViewMode = .always
@@ -72,12 +71,22 @@ final class LoginViewController: UIViewController {
     
     @objc func loginButtonTapped() {
         let searchVC = SearchViewController()
+        networking.authorizationRequest(token: token.text!, completion: {
+            guard let avatarImageURL = self.networking.user?.avatarURL else { return }
+            searchVC.profileImage.kf.setImage(with: URL(string: avatarImageURL))
+            let userNameText = self.networking.user?.userName ?? ""
+            searchVC.profileName.text = "Hello, \(userNameText)"
+        })
+        
+//        let searchVC = SearchViewController()
+////        let webViewVC = WebViewController()
+////        navigationController?.pushViewController(webViewVC, animated: true)
         navigationController?.pushViewController(searchVC, animated: true)
     }
 
     func setupViews() {
         view.backgroundColor = .white
-        view.addSubviews(logoImage, activityIndicator, userName, password, loginButton)
+        view.addSubviews(logoImage, activityIndicator, userName, token, loginButton)
 
         NSLayoutConstraint.activate([
             logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
@@ -89,10 +98,10 @@ final class LoginViewController: UIViewController {
             userName.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 80),
             userName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             userName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            password.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 30),
-            password.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            password.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 50),
+            token.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 30),
+            token.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            token.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            loginButton.topAnchor.constraint(equalTo: token.bottomAnchor, constant: 50),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }

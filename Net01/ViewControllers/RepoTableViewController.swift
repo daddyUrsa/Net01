@@ -32,12 +32,16 @@ class RepoTableViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped )
         let queue = DispatchQueue.global(qos: .utility)
         tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: cellID)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapEdit(_ :)))
+//        tableView.addGestureRecognizer(tapGesture!)
+//        tapGesture!.delegate = self
+
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +57,17 @@ class RepoTableViewController: UIViewController {
             self.repoCount.text = "Repositories found: \(self.repoArray.count)"
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    @objc func tapEdit(recognizer: UITapGestureRecognizer)  {
+        if recognizer.state == UIGestureRecognizer.State.ended {
+            let tapLocation = recognizer.location(in: self.tableView)
+            if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? RepoTableViewCell {
+                    print(tappedCell)
+                }
+            }
         }
     }
     
@@ -81,12 +96,19 @@ extension RepoTableViewController: UITableViewDataSource {
         let cell: RepoTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! RepoTableViewCell
         let cellData = repoArray[indexPath.row]
         cell.cellDataFill(repo: cellData)
+        let tapGesture = UIGestureRecognizer(target: self, action: "CellTapped")
+        cell.addGestureRecognizer(tapGesture)
         return cell
     }
+    
+    
 }
 
-//extension UIViewController: UITableViewDelegate {
-//    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
-//}
+extension RepoTableViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let webViewVC = WebViewController()
+        webViewVC.receivedURL = repoArray[indexPath.row].owner.html_url
+        navigationController?.pushViewController(webViewVC, animated: true)
+//        print("\(repoArray[indexPath.row].owner.html_url)")
+    }
+}
