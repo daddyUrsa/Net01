@@ -42,7 +42,7 @@ final class LoginViewController: UIViewController {
     private let token: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = Constants.usernamePlaceholder
+        label.placeholder = Constants.tokenPlaceholder
         label.borderStyle = .line
         label.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.placeholderPpaddingLeft, height: label.frame.height))
         label.leftViewMode = .always
@@ -77,10 +77,6 @@ final class LoginViewController: UIViewController {
             let userNameText = self.networking.user?.userName ?? ""
             searchVC.profileName.text = "Hello, \(userNameText)"
         })
-        
-//        let searchVC = SearchViewController()
-////        let webViewVC = WebViewController()
-////        navigationController?.pushViewController(webViewVC, animated: true)
         navigationController?.pushViewController(searchVC, animated: true)
     }
 

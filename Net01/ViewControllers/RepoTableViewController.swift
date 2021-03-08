@@ -35,9 +35,6 @@ class RepoTableViewController: UIViewController {
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: cellID)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapEdit(_ :)))
-//        tableView.addGestureRecognizer(tapGesture!)
-//        tapGesture!.delegate = self
 
         return tableView
     }()
@@ -109,6 +106,5 @@ extension RepoTableViewController: UITableViewDelegate {
         let webViewVC = WebViewController()
         webViewVC.receivedURL = repoArray[indexPath.row].owner.html_url
         navigationController?.pushViewController(webViewVC, animated: true)
-//        print("\(repoArray[indexPath.row].owner.html_url)")
     }
 }

@@ -19,9 +19,6 @@ final class Networking {
         "Accept" : "application/vnd.github.v3+json"
         
     ]
-    let authHeader = [
-        "Authorization": "token e5213d68dd0f5ad36e2cd97d60c992f4949628c7"
-    ]
     let sharedSession = URLSession.shared
 
     var model: [Items] = []
