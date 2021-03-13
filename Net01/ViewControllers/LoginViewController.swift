@@ -12,6 +12,7 @@ final class LoginViewController: UIViewController {
     private let networking = Networking()
     private let authTouchFace = AuthTouchFace()
     private let keychain = Keychain()
+    let searchVC = SearchViewController()
 
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
@@ -73,41 +74,37 @@ final class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let searchVC = SearchViewController()
+        
         if let token = keychain.readPassword(service: "newager", account: "github") {
-            print("Token: \(token)")
             authTouchFace.authenticateUser {
-                print("sdfvrvvr")
-                self.networking.authorizationRequest(token: token, completion: {
-                    guard let avatarImageURL = self.networking.user?.avatarURL else { return }
-                    searchVC.profileImage.kf.setImage(with: URL(string: avatarImageURL))
-                    let userNameText = self.networking.user?.userName ?? ""
-                    searchVC.profileName.text = "Hello, \(userNameText)"
-                })
+                self.networkingAuthorizationRequest(token: token)
                 DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(searchVC, animated: true)
+                    self.navigationController?.pushViewController(self.searchVC, animated: true)
                 }
             }
         }
     }
     
     @objc func loginButtonTapped() {
-        let searchVC = SearchViewController()
         let result = keychain.savePassword(password: token.text!, service: "newager", account: "github")
-        
+        //Для отладки
         if result, let savedPassword = keychain.readPassword(service: "newager", account: "github") {
             print("password:\(savedPassword) saved successfully.")
         } else {
             print("can't save password")
         }
-        networking.authorizationRequest(token: token.text!, completion: {
-            guard let avatarImageURL = self.networking.user?.avatarURL else { return }
-            searchVC.profileImage.kf.setImage(with: URL(string: avatarImageURL))
-            let userNameText = self.networking.user?.userName ?? ""
-            searchVC.profileName.text = "Hello, \(userNameText)"
-        })
+        
+        networkingAuthorizationRequest(token: token.text!)
         navigationController?.pushViewController(searchVC, animated: true)
-//        keychain.deletePassword(service: "newager", account: "github")
+    }
+    
+    func networkingAuthorizationRequest(token: String) {
+        networking.authorizationRequest(token: token, completion: {
+            guard let avatarImageURL = self.networking.user?.avatarURL else { return }
+            self.searchVC.profileImage.kf.setImage(with: URL(string: avatarImageURL))
+            let userNameText = self.networking.user?.userName ?? ""
+            self.searchVC.profileName.text = "Hello, \(userNameText)"
+        })
     }
 
     func setupViews() {
