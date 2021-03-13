@@ -10,6 +10,8 @@ import Kingfisher
 
 final class LoginViewController: UIViewController {
     private let networking = Networking()
+    private let authTouchFace = AuthTouchFace()
+    private let keychain = Keychain()
 
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
@@ -69,8 +71,35 @@ final class LoginViewController: UIViewController {
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        let searchVC = SearchViewController()
+        if let token = keychain.readPassword(service: "newager", account: "github") {
+            print("Token: \(token)")
+            authTouchFace.authenticateUser {
+                print("sdfvrvvr")
+                self.networking.authorizationRequest(token: token, completion: {
+                    guard let avatarImageURL = self.networking.user?.avatarURL else { return }
+                    searchVC.profileImage.kf.setImage(with: URL(string: avatarImageURL))
+                    let userNameText = self.networking.user?.userName ?? ""
+                    searchVC.profileName.text = "Hello, \(userNameText)"
+                })
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(searchVC, animated: true)
+                }
+            }
+        }
+    }
+    
     @objc func loginButtonTapped() {
         let searchVC = SearchViewController()
+        let result = keychain.savePassword(password: token.text!, service: "newager", account: "github")
+        
+        if result, let savedPassword = keychain.readPassword(service: "newager", account: "github") {
+            print("password:\(savedPassword) saved successfully.")
+        } else {
+            print("can't save password")
+        }
         networking.authorizationRequest(token: token.text!, completion: {
             guard let avatarImageURL = self.networking.user?.avatarURL else { return }
             searchVC.profileImage.kf.setImage(with: URL(string: avatarImageURL))
@@ -78,6 +107,7 @@ final class LoginViewController: UIViewController {
             searchVC.profileName.text = "Hello, \(userNameText)"
         })
         navigationController?.pushViewController(searchVC, animated: true)
+//        keychain.deletePassword(service: "newager", account: "github")
     }
 
     func setupViews() {
