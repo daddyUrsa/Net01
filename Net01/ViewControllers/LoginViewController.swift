@@ -115,7 +115,7 @@ final class LoginViewController: UIViewController {
             logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
             logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImage.heightAnchor.constraint(equalToConstant: 150),
-            logoImage.widthAnchor.constraint(equalToConstant: 250),
+            logoImage.widthAnchor.constraint(equalToConstant: 150),
             activityIndicator.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
             userName.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 80),

@@ -94,7 +94,7 @@ class SearchViewController: UIViewController {
             profileImage.topAnchor.constraint(equalTo: profileName.bottomAnchor, constant: 30),
             profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             profileImage.widthAnchor.constraint(equalToConstant: 200),
-            profileImage.heightAnchor.constraint(equalToConstant: 150),
+            profileImage.heightAnchor.constraint(equalToConstant: 200),
             repoName.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 50),
             repoName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             repoName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
